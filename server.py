@@ -49,8 +49,13 @@ def process_login():
 
     user_exists = User.query.filter_by(email=user_email).all() #Need to check if user is in DB and write an if statement based on that
 
+@app.route('/movies')
+def movie_list():
+    """Show all movies"""
 
+    movies = Movie.query.all()
 
+    return render_template('movie_list.html', movies=movies)
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
